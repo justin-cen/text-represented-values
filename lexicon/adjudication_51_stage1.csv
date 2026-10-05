@@ -1,0 +1,52 @@
+﻿system,facet,lang,word,source,coherence,margin,align_en,pass_coh,pass_margin,freq_reviews_zh,freq_reviews_en,freq_news_zh,freq_news_en,freq_total,pass_freq,auto,reason,full_freq
+hofstede,IDV_col,en,social approval,anchor,0.8620581030845642,0.0077933073043823,,False,True,0,0,0,0,0,False,keep,内聚低;频度低,2
+hofstede,IDV_ind,zh,自由时间,anchor,0.9052188992500304,0.0063013434410095,0.9172991514205932,True,True,0,0,0,0,0,False,keep,频度低,34
+hofstede,IND_res,en,strict norms,anchor,0.870637059211731,0.0091635584831237,,False,True,0,0,0,0,0,False,keep,内聚低;频度低,0
+hofstede,IND_res,zh,节制欲望,anchor,0.9300114512443542,0.0238828659057617,0.8434591293334961,True,True,0,0,0,0,0,False,keep,频度低,8
+hofstede,LTO_short,en,social obligation,anchor,0.8366867899894714,-0.0152423381805419,,False,False,0,0,0,0,0,False,keep,内聚低;区分度低;频度低,3
+schwartz,BEC,en,mature love,anchor,0.891588568687439,0.0158319473266601,,True,True,0,0,0,0,0,False,keep,频度低,3
+schwartz,BEC,zh,他人福祉,anchor,0.907801389694214,0.0025211572647094,0.9068984985351562,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,BEC,zh,成熟的爱,anchor,0.9071214199066162,0.0148529410362243,0.9181912541389464,True,True,0,0,0,0,0,False,keep,频度低,42
+schwartz,COI,en,honoring parents,anchor,0.8823543787002563,0.0134265422821044,,False,True,0,0,0,0,0,False,keep,内聚低;频度低,0
+schwartz,COI,en,respect elders,anchor,0.9128252267837524,0.0201522707939147,,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,COI,en,avoid bothering others,anchor,0.8838001489639282,0.0190096497535705,,False,True,0,0,0,0,0,False,keep,内聚低;频度低,0
+schwartz,COI,zh,不扰他人,anchor,0.9164493083953856,0.0189591646194458,0.8979228734970093,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,COI,zh,举止得体,anchor,0.9300082325935364,0.0226362347602844,0.8727806806564331,True,True,0,0,0,0,0,False,keep,频度低,7
+schwartz,COI,zh,尊敬长辈,anchor,0.9245887994766236,0.0162833929061889,0.92391175031662,True,True,0,0,0,0,0,False,keep,频度低,9
+schwartz,FAC,en,social recognition,anchor,0.9020711183547974,0.0244312286376953,,True,True,0,0,0,0,0,False,keep,频度低,2
+schwartz,FAC,en,respect by others,anchor,0.9136725068092346,-0.0021774768829345,,True,False,0,0,0,0,0,False,keep,区分度低;频度低,0
+schwartz,FAC,zh,他人赞许,anchor,0.9190642833709716,0.0145204067230224,0.8710724115371704,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,FAC,zh,公众形象,anchor,0.9159964323043824,0.0287594199180603,0.9015967845916748,True,True,0,0,0,0,0,False,keep,频度低,892
+schwartz,HE,zh,满足欲望,anchor,0.9134910106658936,0.0188303589820861,0.8536089062690735,True,True,0,0,0,0,0,False,keep,频度低,45
+schwartz,POD,en,control over others,anchor,0.897444486618042,0.0198937654495239,,True,True,0,0,0,0,0,False,keep,频度低,1
+schwartz,POD,zh,社会权力,anchor,0.905332088470459,0.0183952450752258,0.8968150615692139,True,True,0,0,0,0,0,False,keep,频度低,16
+schwartz,SDA,en,choosing goals,anchor,0.8908617496490479,0.0240870714187622,,False,True,0,0,0,0,0,False,keep,内聚低;频度低,0
+schwartz,SDA,zh,自选目标,anchor,0.9173020124435424,0.032908022403717,0.8846526145935059,True,True,0,0,0,0,0,False,keep,频度低,1
+schwartz,SDT,en,independent thought,anchor,0.9041907787322998,0.0139392614364624,,True,True,0,0,0,0,0,False,keep,频度低,7
+schwartz,SDT,zh,独立见解,anchor,0.9074802994728088,-0.0060554146766662,0.8992772698402405,True,False,0,0,0,0,0,False,keep,区分度低;频度低,17
+schwartz,SEP,en,free from danger,anchor,0.8918083310127258,0.0230157971382141,,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,SES,en,family security,anchor,0.9045021533966064,0.0181251168251037,,True,True,0,0,0,0,0,False,keep,频度低,1
+schwartz,SES,en,stability of society,anchor,0.9072811603546144,0.0261215567588806,,True,True,0,0,0,0,0,False,keep,频度低,1
+schwartz,SES,en,protection of nation,anchor,0.9045236110687256,0.0277034044265747,,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,ST,zh,刺激人生,anchor,0.9267815351486206,0.0331261754035949,0.901400625705719,True,True,0,0,0,0,0,False,keep,频度低,3
+schwartz,ST,zh,多彩人生,anchor,0.908833384513855,0.0144413709640502,0.8956323266029358,True,True,0,0,0,0,0,False,keep,频度低,9
+schwartz,TR,en,respect for tradition,anchor,0.9075596332550048,0.0113492012023925,,True,True,0,0,0,0,0,False,keep,频度低,1
+schwartz,TR,en,accepting portion in life,anchor,0.8706487417221069,-0.0097945928573608,,False,False,0,0,0,0,0,False,keep,内聚低;区分度低;频度低,0
+schwartz,TR,zh,安分守命,anchor,0.8836246728897095,0.0128469467163085,0.7880212068557739,False,True,0,0,0,0,0,False,keep,内聚低;频度低,0
+schwartz,UNC,en,world at peace,anchor,0.8859384655952454,0.0052240490913391,,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,UNC,en,care for the weak,anchor,0.8810833096504211,0.0021685361862182,,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,UNC,zh,保护众人,anchor,0.9077781438827516,1.1801719665527344e-05,0.891055703163147,True,True,0,0,0,0,0,False,keep,频度低,5
+schwartz,UNC,zh,扶助弱者,anchor,0.9098134636878968,0.0082518458366394,0.8785744309425354,True,True,0,0,0,0,0,False,keep,频度低,2
+schwartz,UNN,en,unity with nature,anchor,0.8949397802352905,0.0213551521301269,,True,True,0,0,0,0,0,False,keep,频度低,1
+schwartz,UNN,en,preserving nature,anchor,0.9198752045631408,0.035808265209198,,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,UNN,zh,保育自然,anchor,0.9325746893882751,0.034970998764038,0.8916333317756653,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,UNT,en,broadminded,anchor,0.8857752084732056,0.0032180547714233,,True,True,0,0,0,0,0,False,keep,频度低,0
+schwartz,UNT,en,inner harmony,anchor,0.8784222602844238,0.0109401941299438,,False,True,0,0,0,0,0,False,keep,内聚低;频度低,0
+schwartz,UNT,en,understanding others,anchor,0.9162269830703736,0.0141513347625732,,True,True,0,0,0,0,0,False,keep,频度低,2
+schwartz,UNT,zh,内心和谐,anchor,0.9146773815155028,0.0056886672973632,0.8526855707168579,True,True,0,0,0,0,0,False,keep,频度低,1
+scv,SCV_dedication,en,dedication to work,anchor,0.9124658107757568,0.0546704530715942,,True,True,0,0,0,0,0,False,keep,频度低,0
+scv,SCV_democracy,en,democracy (socialist),anchor,0.9096288681030272,0.049929916858673,,True,True,0,0,0,0,0,False,keep,频度低,0
+scv,SCV_freedom,en,freedom (ordered),anchor,0.9046921730041504,0.0508350729942321,,True,True,0,0,0,0,0,False,keep,频度低,0
+scv,SCV_friendliness,en,friendliness & kindness,anchor,0.9130719900131226,0.039384126663208,,True,True,0,0,0,0,0,False,keep,频度低,0
+scv,SCV_integrity,en,integrity & honesty,anchor,0.9133001565933228,0.0290363430976867,,True,True,0,0,0,0,0,False,keep,频度低,0
+scv,SCV_prosperity,en,prosperity & strength,anchor,0.9049238562583924,0.0378898978233337,,True,True,0,0,0,0,0,False,keep,频度低,0

@@ -1,0 +1,6 @@
+﻿__pycache__/
+*.pyc
+emb_cache/
+*.npy
+*.npz
+_BUILD_TMP/

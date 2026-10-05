@@ -1,0 +1,123 @@
+﻿corpus_id,channel,culture,year,split_half_r
+gwr_1990,中国政府工作报告,zh,1990,0.8304568874410293
+gwr_1991,中国政府工作报告,zh,1991,0.9197576433208825
+gwr_1992,中国政府工作报告,zh,1992,0.9377534650039027
+gwr_1993,中国政府工作报告,zh,1993,0.826189164378253
+gwr_1994,中国政府工作报告,zh,1994,0.9344925305007342
+gwr_1995,中国政府工作报告,zh,1995,0.9521601104529875
+gwr_1996,中国政府工作报告,zh,1996,0.9464258790109439
+gwr_1997,中国政府工作报告,zh,1997,0.9738312733169822
+gwr_1998,中国政府工作报告,zh,1998,0.9162964305284504
+gwr_1999,中国政府工作报告,zh,1999,0.9400478705879116
+gwr_2000,中国政府工作报告,zh,2000,0.859832916593339
+gwr_2001,中国政府工作报告,zh,2001,0.8871051576200227
+gwr_2002,中国政府工作报告,zh,2002,0.9583119704381532
+gwr_2003,中国政府工作报告,zh,2003,0.9417981010567066
+gwr_2004,中国政府工作报告,zh,2004,0.9500580843232203
+gwr_2005,中国政府工作报告,zh,2005,0.9689211556967999
+gwr_2006,中国政府工作报告,zh,2006,0.9356038120853454
+gwr_2007,中国政府工作报告,zh,2007,0.9250139640904332
+gwr_2008,中国政府工作报告,zh,2008,0.806046311067045
+gwr_2009,中国政府工作报告,zh,2009,0.9694890443727471
+gwr_2010,中国政府工作报告,zh,2010,0.9576995546349136
+gwr_2011,中国政府工作报告,zh,2011,0.9062661480746741
+gwr_2012,中国政府工作报告,zh,2012,0.9771415760525459
+gwr_2013,中国政府工作报告,zh,2013,0.9015576413597731
+gwr_2014,中国政府工作报告,zh,2014,0.9490086814342645
+gwr_2015,中国政府工作报告,zh,2015,0.9562896341082744
+gwr_2016,中国政府工作报告,zh,2016,0.9386913101822291
+gwr_2017,中国政府工作报告,zh,2017,0.9564059892308957
+gwr_2018,中国政府工作报告,zh,2018,0.9048135195854808
+gwr_2019,中国政府工作报告,zh,2019,0.9715560537729673
+gwr_2020,中国政府工作报告,zh,2020,0.9441269309614445
+gwr_2021,中国政府工作报告,zh,2021,0.9502613607301692
+gwr_2022,中国政府工作报告,zh,2022,0.8911140657136248
+gwr_2023,中国政府工作报告,zh,2023,0.9326311802017427
+gwr_2024,中国政府工作报告,zh,2024,0.9265716564041695
+gwr_2025,中国政府工作报告,zh,2025,0.9627348799133563
+gwr_2026,中国政府工作报告,zh,2026,0.966186005811071
+sotu_1990,US State of the Union,west,1990,0.7428049537200949
+sotu_1991,US State of the Union,west,1991,0.8584185860254967
+sotu_1992,US State of the Union,west,1992,0.7368930406736215
+sotu_1993,US State of the Union,west,1993,0.8935469705901706
+sotu_1994,US State of the Union,west,1994,0.6344668835229439
+sotu_1995,US State of the Union,west,1995,0.8389115173561736
+sotu_1996,US State of the Union,west,1996,0.8811173077072009
+sotu_1997,US State of the Union,west,1997,0.9084230517591074
+sotu_1998,US State of the Union,west,1998,0.8147432235335796
+sotu_1999,US State of the Union,west,1999,0.964039614546465
+sotu_2000,US State of the Union,west,2000,0.9344031691405295
+sotu_2001,US State of the Union,west,2001,0.6017049294982846
+sotu_2002,US State of the Union,west,2002,0.742101198915453
+sotu_2003,US State of the Union,west,2003,0.9365237201558313
+sotu_2004,US State of the Union,west,2004,0.8141803380242927
+sotu_2005,US State of the Union,west,2005,0.8076765876802171
+sotu_2006,US State of the Union,west,2006,0.7644215969283804
+sotu_2007,US State of the Union,west,2007,0.8279284170801993
+sotu_2008,US State of the Union,west,2008,0.916637044616843
+sotu_2009,US State of the Union,west,2009,0.9567603775211976
+sotu_2010,US State of the Union,west,2010,0.9092394573940502
+sotu_2011,US State of the Union,west,2011,0.6610577912744179
+sotu_2012,US State of the Union,west,2012,0.7420509715111747
+sotu_2013,US State of the Union,west,2013,0.8247730146034886
+sotu_2014,US State of the Union,west,2014,0.9332127171884522
+sotu_2015,US State of the Union,west,2015,0.887360159977757
+sotu_2016,US State of the Union,west,2016,0.589556484986151
+sotu_2017,US State of the Union,west,2017,0.7993067329861705
+sotu_2018,US State of the Union,west,2018,0.8760862729441677
+sotu_2019,US State of the Union,west,2019,0.8202159507496043
+sotu_2020,US State of the Union,west,2020,0.8631675539317034
+sotu_2021,US State of the Union,west,2021,0.79886907533654
+sotu_2022,US State of the Union,west,2022,0.9139676168096916
+sotu_2023,US State of the Union,west,2023,0.6919222074281046
+sotu_2024,US State of the Union,west,2024,0.8860491698394013
+sotu_2025,US State of the Union,west,2025,0.7604570300587067
+sotu_2026,US State of the Union,west,2026,0.5690139806159032
+uks_1990,UK King's/Queen's Speech,west,1990,0.9069893914869843
+uks_1991,UK King's/Queen's Speech,west,1991,0.8747224841393869
+uks_1992,UK King's/Queen's Speech,west,1992,0.7709698436633794
+uks_1993,UK King's/Queen's Speech,west,1993,0.9318475077010355
+uks_1994,UK King's/Queen's Speech,west,1994,0.947281703274513
+uks_1995,UK King's/Queen's Speech,west,1995,0.9610535160132987
+uks_1996,UK King's/Queen's Speech,west,1996,0.9692380754489947
+uks_1997,UK King's/Queen's Speech,west,1997,0.8334063343159837
+uks_1998,UK King's/Queen's Speech,west,1998,0.847437180032207
+uks_1999,UK King's/Queen's Speech,west,1999,0.8766227552457099
+uks_2000,UK King's/Queen's Speech,west,2000,0.8505404585961538
+uks_2001,UK King's/Queen's Speech,west,2001,0.9387499874911401
+uks_2002,UK King's/Queen's Speech,west,2002,0.9199752601957772
+uks_2003,UK King's/Queen's Speech,west,2003,0.9476811110487596
+uks_2004,UK King's/Queen's Speech,west,2004,0.872984941326889
+uks_2005,UK King's/Queen's Speech,west,2005,0.9389121579111355
+uks_2006,UK King's/Queen's Speech,west,2006,0.9519835380285461
+uks_2007,UK King's/Queen's Speech,west,2007,0.9251843970673906
+uks_2008,UK King's/Queen's Speech,west,2008,0.9284778786267192
+uks_2009,UK King's/Queen's Speech,west,2009,0.9199341532731311
+uks_2010,UK King's/Queen's Speech,west,2010,0.9776787130156325
+uks_2012,UK King's/Queen's Speech,west,2012,0.8062980028585278
+uks_2013,UK King's/Queen's Speech,west,2013,0.9234944191185404
+uks_2014,UK King's/Queen's Speech,west,2014,0.8895063591898005
+uks_2015,UK King's/Queen's Speech,west,2015,0.8012989780191635
+uks_2016,UK King's/Queen's Speech,west,2016,0.9650093986148636
+uks_2017,UK King's/Queen's Speech,west,2017,0.9574046437661462
+uks_2019_oct,UK King's/Queen's Speech,west,2019,0.8942043097826577
+uks_2019_dec,UK King's/Queen's Speech,west,2019,0.8888643297478923
+uks_2021,UK King's/Queen's Speech,west,2021,0.9405492352843902
+uks_2022,UK King's/Queen's Speech,west,2022,0.9753323282322455
+uks_2023,UK King's/Queen's Speech,west,2023,0.9563912215629967
+uks_2024,UK King's/Queen's Speech,west,2024,0.9256681462269524
+uks_2026,UK King's/Queen's Speech,west,2026,0.965502426463544
+soteu_2010,EU State of the Union,west,2010,0.9532964052083344
+soteu_2011,EU State of the Union,west,2011,0.922677907657363
+soteu_2012,EU State of the Union,west,2012,0.9585654889088835
+soteu_2013,EU State of the Union,west,2013,0.8370821152610202
+soteu_2015,EU State of the Union,west,2015,0.7109599987902474
+soteu_2016,EU State of the Union,west,2016,0.8536011156954385
+soteu_2017,EU State of the Union,west,2017,0.7936680381977351
+soteu_2018,EU State of the Union,west,2018,0.9192252894698395
+soteu_2020,EU State of the Union,west,2020,0.8775213690841545
+soteu_2021,EU State of the Union,west,2021,0.9017173490508125
+soteu_2022,EU State of the Union,west,2022,0.909806115280322
+soteu_2023,EU State of the Union,west,2023,0.8831369223081164
+soteu_2025,EU State of the Union,west,2025,0.8304494095244266
+soteu_2026,EU State of the Union,west,2026,0.9029054553878376

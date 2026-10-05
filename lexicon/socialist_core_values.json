@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "version": "v1",
+    "system": "社会主义核心价值观（本土层）",
+    "source": "党的十八大报告（2012）与《关于培育和践行社会主义核心价值观的意见》（2013）官方表述；学术合法化先例：Bond (1987) Chinese Value Survey",
+    "structure": "国家层面（富强/民主/文明/和谐）· 社会层面（自由/平等/公正/法治）· 个人层面（爱国/敬业/诚信/友善）",
+    "usage": "标注 schema 第四层；rubric 定义直接用于 LLM 标注提示词；'同名不同义'构念已在 definition 中显式标注",
+    "provenance": "本工作区自建（public instruments + 官方文件），与其他体系锚定层同等地位"
+  },
+  "SCV_prosperity": {
+    "zh": "富强", "en": "prosperity & strength", "level": "国家",
+    "definition": "国家繁荣富强：经济发展、科技进步、综合国力与民族复兴的追求（1=缺乏，5=强烈）",
+    "anchor_zh": ["富强", "繁荣", "发展", "复兴", "国力", "强盛", "现代化", "小康"],
+    "map": {"schwartz": ["AC", "POR"], "wvs": ["economic_values"], "note": "国家发展成就取向"}
+  },
+  "SCV_democracy": {
+    "zh": "民主", "en": "democracy (socialist)", "level": "国家",
+    "definition": "人民民主：人民当家作主、协商民主、民主参与与民主监督【同名不同义：指中国特色社会主义民主，非西方自由主义民主】（1=缺乏，5=强烈）",
+    "anchor_zh": ["民主", "人民民主", "当家作主", "协商民主", "参政议政", "民主监督", "全过程人民民主"],
+    "map": {"schwartz": ["UNC"], "wvs": ["political_culture"], "note": "与 WVS Q250 不可直接等价，论文中分列报告"}
+  },
+  "SCV_civility": {
+    "zh": "文明", "en": "civility", "level": "国家",
+    "definition": "社会文明程度：公民素养、公共道德、礼仪规范与文化建设（1=缺乏，5=强烈）",
+    "anchor_zh": ["文明", "素养", "礼仪", "公德", "礼貌", "文明城市", "精神文明", "道德风尚"],
+    "map": {"schwartz": ["COI"], "wvs": ["ethics"]}
+  },
+  "SCV_harmony": {
+    "zh": "和谐", "en": "harmony", "level": "国家",
+    "definition": "和谐：社会和谐、人际和睦、人与自然和谐共生的追求（1=缺乏，5=强烈）",
+    "anchor_zh": ["和谐", "和睦", "和美", "稳定", "团结", "融洽", "和谐社会", "共生"],
+    "map": {"schwartz": ["COI", "SES"], "wvs": ["security_sense"]}
+  },
+  "SCV_freedom": {
+    "zh": "自由", "en": "freedom (ordered)", "level": "社会",
+    "definition": "自由：人的自由全面发展、依法享有的自由权利【同名不同义：官方定义为有法律与纪律约束的自由】（1=缺乏，5=强烈）",
+    "anchor_zh": ["自由", "自主", "解放", "自由发展", "权利", "尊严", "个性"],
+    "map": {"schwartz": ["SDT", "SDA"], "wvs": ["postmaterialism"], "note": "与 Schwartz 自我导向部分同构但官方语境受限定义"}
+  },
+  "SCV_equality": {
+    "zh": "平等", "en": "equality", "level": "社会",
+    "definition": "平等：法律面前人人平等、机会公平、权利平等与反歧视（1=缺乏，5=强烈）",
+    "anchor_zh": ["平等", "公平", "均等", "平权", "一视同仁", "反歧视", "机会公平"],
+    "map": {"schwartz": ["UNC"], "wvs": ["social_values"]}
+  },
+  "SCV_justice": {
+    "zh": "公正", "en": "justice", "level": "社会",
+    "definition": "公正：社会公平正义、分配公正、司法公正与程序正义（1=缺乏，5=强烈）",
+    "anchor_zh": ["公正", "正义", "公道", "公平", "司法公正", "程序正义", "分配公平", "伸张正义"],
+    "map": {"schwartz": ["UNC"], "wvs": ["ethics", "economic_values"]}
+  },
+  "SCV_ruleoflaw": {
+    "zh": "法治", "en": "rule of law", "level": "社会",
+    "definition": "法治：依法治国、法律权威、全民守法与依法治理（1=缺乏，5=强烈）",
+    "anchor_zh": ["法治", "依法治国", "法律", "守法", "立法", "司法", "依法", "法治国家"],
+    "map": {"schwartz": ["COR"], "wvs": ["political_culture", "ethics"]}
+  },
+  "SCV_patriotism": {
+    "zh": "爱国", "en": "patriotism", "level": "个人",
+    "definition": "爱国：爱国主义、国家认同、民族自豪与维护国家利益（1=缺乏，5=强烈）",
+    "anchor_zh": ["爱国", "爱国主义", "祖国", "国家认同", "民族自豪", "报国", "国家利益", "中华"],
+    "map": {"schwartz": ["SES", "TR"], "wvs": ["Q254 national pride 对应项"]}
+  },
+  "SCV_dedication": {
+    "zh": "敬业", "en": "dedication to work", "level": "个人",
+    "definition": "敬业：爱岗敬业、职业精神、勤勉尽责与奉献（1=缺乏，5=强烈）",
+    "anchor_zh": ["敬业", "爱岗", "职业精神", "勤勉", "尽责", "奉献", "实干", "工匠精神"],
+    "map": {"schwartz": ["AC", "COR"], "wvs": ["economic_values", "work ethic 相关"]}
+  },
+  "SCV_integrity": {
+    "zh": "诚信", "en": "integrity & honesty", "level": "个人",
+    "definition": "诚信：诚实守信、言行一致、信用与契约精神（1=缺乏，5=强烈）",
+    "anchor_zh": ["诚信", "诚实", "守信", "信用", "契约", "言行一致", "承诺", "信任"],
+    "map": {"schwartz": ["BED"], "wvs": ["ethics", "social_capital"]}
+  },
+  "SCV_friendliness": {
+    "zh": "友善", "en": "friendliness & kindness", "level": "个人",
+    "definition": "友善：友善待人、互助友爱、善良宽容与和睦相处（1=缺乏，5=强烈）",
+    "anchor_zh": ["友善", "友爱", "善良", "宽容", "互助", "和睦", "仁爱", "友好"],
+    "map": {"schwartz": ["BEC", "UNT"], "wvs": ["social_values"]}
+  }
+}

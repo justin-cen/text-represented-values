@@ -1,0 +1,46 @@
+﻿system,facet,lang,word,full_freq,delta_centroid_cos,contrast_with,contrast_without,delta_contrast,sign_flip,verdict,reason
+hofstede,IDV_col,en,social approval,2,4e-05,51.151,52.188,-1.037,False,keep,影响可忽略
+hofstede,IND_res,en,strict norms,0,0.0001,30.823,32.324,-1.501,False,keep,影响可忽略
+hofstede,IND_res,zh,节制欲望,8,6e-05,30.823,29.421,1.402,False,keep,影响可忽略
+hofstede,LTO_short,en,social obligation,3,7e-05,57.091,58.655,-1.564,False,keep,影响可忽略
+schwartz,BEC,en,mature love,3,0.00012,28.783,30.28,-1.497,False,keep,影响可忽略
+schwartz,BEC,zh,他人福祉,0,0.00012,28.783,27.282,1.501,False,keep,影响可忽略
+schwartz,COI,en,honoring parents,0,0.00019,42.436,44.681,-2.245,False,keep,影响可忽略
+schwartz,COI,en,respect elders,0,0.00014,42.436,44.52,-2.084,False,keep,影响可忽略
+schwartz,COI,en,avoid bothering others,0,0.00018,42.436,45.163,-2.727,False,keep,影响可忽略
+schwartz,COI,zh,不扰他人,0,0.00012,42.436,41.389,1.047,False,keep,影响可忽略
+schwartz,COI,zh,举止得体,7,0.00011,42.436,41.139,1.297,False,keep,影响可忽略
+schwartz,COI,zh,尊敬长辈,9,0.00012,42.436,40.861,1.575,False,keep,影响可忽略
+schwartz,FAC,en,social recognition,2,7e-05,41.749,42.982,-1.233,False,keep,影响可忽略
+schwartz,FAC,en,respect by others,0,6e-05,41.749,43.236,-1.487,False,keep,影响可忽略
+schwartz,FAC,zh,他人赞许,0,5e-05,41.749,40.765,0.984,False,keep,影响可忽略
+schwartz,POD,en,control over others,1,6e-05,41.044,42.549,-1.505,False,keep,影响可忽略
+schwartz,SDA,en,choosing goals,0,0.00012,38.85,40.572,-1.722,False,keep,影响可忽略
+schwartz,SDA,zh,自选目标,1,9e-05,38.85,37.73,1.12,False,keep,影响可忽略
+schwartz,SDT,en,independent thought,7,3e-05,47.985,49.265,-1.28,False,keep,影响可忽略
+schwartz,SEP,en,free from danger,0,6e-05,41.342,42.722,-1.379,False,keep,影响可忽略
+schwartz,SES,en,family security,1,6e-05,30.717,32.103,-1.386,False,keep,影响可忽略
+schwartz,SES,en,stability of society,1,6e-05,30.717,32.04,-1.323,False,keep,影响可忽略
+schwartz,SES,en,protection of nation,0,6e-05,30.717,31.933,-1.216,False,keep,影响可忽略
+schwartz,ST,zh,刺激人生,3,6e-05,40.68,39.61,1.07,False,keep,影响可忽略
+schwartz,ST,zh,多彩人生,9,7e-05,40.68,39.697,0.982,False,keep,影响可忽略
+schwartz,TR,en,respect for tradition,1,5e-05,44.664,45.757,-1.093,False,keep,影响可忽略
+schwartz,TR,en,accepting portion in life,0,6e-05,44.664,46.054,-1.389,False,keep,影响可忽略
+schwartz,TR,zh,安分守命,0,5e-05,44.664,44.158,0.507,False,keep,影响可忽略
+schwartz,UNC,en,world at peace,0,0.00011,33.727,35.422,-1.695,False,keep,影响可忽略
+schwartz,UNC,en,care for the weak,0,0.00011,33.727,35.358,-1.631,False,keep,影响可忽略
+schwartz,UNC,zh,保护众人,5,9e-05,33.727,32.558,1.169,False,keep,影响可忽略
+schwartz,UNC,zh,扶助弱者,2,9e-05,33.727,32.036,1.691,False,keep,影响可忽略
+schwartz,UNN,en,unity with nature,1,5e-05,44.899,46.041,-1.141,False,keep,影响可忽略
+schwartz,UNN,en,preserving nature,0,4e-05,44.899,46.011,-1.111,False,keep,影响可忽略
+schwartz,UNN,zh,保育自然,0,4e-05,44.899,44.034,0.865,False,keep,影响可忽略
+schwartz,UNT,en,broadminded,0,0.00015,35.464,37.257,-1.793,False,keep,影响可忽略
+schwartz,UNT,en,inner harmony,0,0.00015,35.464,37.146,-1.682,False,keep,影响可忽略
+schwartz,UNT,en,understanding others,2,0.00011,35.464,37.274,-1.81,False,keep,影响可忽略
+schwartz,UNT,zh,内心和谐,1,0.00011,35.464,33.587,1.877,False,keep,影响可忽略
+scv,SCV_dedication,en,dedication to work,0,7e-05,63.13,65.3,-2.17,False,keep,影响可忽略
+scv,SCV_democracy,en,democracy (socialist),0,0.00011,63.438,65.566,-2.128,False,keep,影响可忽略
+scv,SCV_freedom,en,freedom (ordered),0,0.00018,47.941,50.015,-2.074,False,keep,影响可忽略
+scv,SCV_friendliness,en,friendliness & kindness,0,9e-05,56.465,58.413,-1.948,False,keep,影响可忽略
+scv,SCV_integrity,en,integrity & honesty,0,9e-05,55.797,57.676,-1.88,False,keep,影响可忽略
+scv,SCV_prosperity,en,prosperity & strength,0,5e-05,69.613,71.139,-1.526,False,keep,影响可忽略

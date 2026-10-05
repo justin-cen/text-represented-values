@@ -1,0 +1,228 @@
+%TITLE Measuring Cultural Values in Text without a Cultural Baseline: A Frozen Bilingual Lexicon Approach with Four-Fold Robustness Evidence
+%SHORTTITLE Measuring Cultural Values without a Cultural Baseline
+%ABSTRACTEN The quantitative measurement of cultural values has long relied on sample surveys, which are costly, infrequently updated, and coarse in granularity. The "text as data" paradigm offers an alternative, yet two questions remain open: whether values represented in text converge with survey-measured national values, and which dimensions of textual difference can be robustly replicated. We propose a measurement pipeline of frozen bilingual lexicon, multilingual embedding, within-text normalization, and dimensional contrast scoring, covering Hofstede's six dimensions, the 13 World Values Survey (WVS) facets, Schwartz's 19 refined values, and the 12 Socialist Core Values (2,559 words). We apply it to three matched corpora—46,274 reviews of the same 3,134 films from Douban and Letterboxd; 27,000 month-aligned news articles from People's Daily-family outlets versus Western mainstream media; and 122 annual governing texts—plus eleven diachronic layers (2005–2026) spanning political, news, and review genres. We report four findings. (1) The multilingual embedding space exhibits a cross-lingual baseline bias that invalidates raw cross-lingual comparison; after within-text normalization, measurements are highly stable across three lexicon versions (text-level r = 0.97–1.00), yet only a minority of group contrasts survive version change. (2) East–West textual differences are register-level and tiered in robustness: indulgence-restraint passes lexicon-version, eleven-layer, placebo, and item-anchor checks and is direction-consistent across three independent encoders; masculinity and power distance are corroborated by three independent anchors; identity, long-/short-term orientation, and uncertainty avoidance are method-dependent and are therefore not treated as findings. (3) The three corpora separate 12 Western outlets from 3 Chinese outlets without overlap on indulgence-restraint. (4) Text-derived scores do not converge with Hofstede country scores or WVS means (only identity shows weak agreement, rho = +0.50; 7 of 13 WVS facets agree in direction), indicating that text measures discourse register rather than national attitudes. We conclude that the four-fold robustness framework should be the reporting standard for text-based cultural measurement, and that symmetric measurement without a presumed cultural baseline is both feasible and necessary.
+%KEYWORDSEN cultural values; cross-lingual word embeddings; measurement validity; text mining; computational social science; register versus attitude
+
+# Introduction
+
+The quantitative measurement of cultural values has long relied on sample surveys. Instruments such as the World Values Survey (WVS) and Hofstede's dimensional framework provide authoritative cross-national benchmarks, but they are costly, slow to update, and coarse in granularity. The "text as data" paradigm promises a complementary path: newspapers, reviews, and governing documents are produced continuously, at scale, and in the language that social actors actually use (Gentzkow *et al.*, 2019[[1]]; Grimmer *et al.*, 2022[[2]]).
+
+That promise, however, is not self-fulfilling. Scale does not confer validity; large corpora can amplify systematic bias without making it visible (Lazer *et al.*, 2014[[3]]). Automated content analysis introduces instrumental error that, if left uncorrected, contaminates downstream inference (TeBlunthuis *et al.*, 2024[[4]]). And in the cross-lingual setting, the very act of comparing similarity scores across languages presupposes that such scores are commensurable—an assumption that, as we show below, is false.
+
+This paper makes a methodological contribution to text-based cultural measurement, and reports substantive findings only to the extent that they survive a four-fold robustness framework. Our position is deliberately symmetric: we do not treat any culture's value profile as a baseline against which others are evaluated. Textual differences are interpreted as differences in discourse register—how institutions and platforms speak about values—and not as differences in national attitudes or as deficits of any kind.
+
+We ask three questions. RQ1 (measurement): can a frozen bilingual lexicon combined with multilingual embedding reliably measure value salience in Chinese and Western text? RQ2 (robustness): which dimensions of textual difference survive independent changes of lexicon, model, and anchor? RQ3 (construct boundary): do text-derived value scores converge with survey-based national values, and if not, what do they measure?
+
+# Related Work
+
+## Measuring values: surveys, lexicons, embeddings
+
+Cross-cultural value measurement began with Hofstede's dimensional theory (Hofstede, 2001[[6]]) and was extended by Inglehart's two-axis cultural map (Inglehart, 1997[[5]]) and by Schwartz's theory of basic human values (Schwartz & Cieciuch, 2012[[7]]). Each framework carries known limitations: Hofstede's original data are historically distant; survey instruments are expensive and slow.
+
+Text-based alternatives fall into three families. Dictionary approaches, such as LIWC (Pennebaker *et al.*, 2015[[8]]) and the Personal Values Dictionary (Ponizovskiy *et al.*, 2020[[9]]), are transparent and reproducible but context-insensitive. Word-embedding approaches showed that social biases are encoded in vector spaces and can be quantified and even attenuated (Caliskan *et al.*, 2017[[10]]; Bolukbasi *et al.*, 2016[[11]]; Garg *et al.*, 2018[[12]]). Pretrained language models substantially improved semantic representation (Devlin *et al.*, 2019[[13]]). Our method belongs to the embedding family, but differs in two respects: we freeze the lexicon so that every lexical decision is auditable, and we normalize within text so that cross-lingual comparison does not depend on absolute similarity.
+
+## Cross-lingual measurement and its pitfalls
+
+Unsupervised cross-lingual word embedding alignment (Conneau *et al.*, 2018[[14]]) and large-scale multilingual pretraining (Conneau *et al.*, 2020[[15]]) make a shared representation space feasible (Ruder *et al.*, 2019[[16]]). Yet evaluation robustness is itself a research problem: cross-lingual embedding quality varies sharply with language pair and evaluation protocol (Glavaš *et al.*, 2019[[17]]). The implication for cultural measurement is direct—absolute cross-lingual similarity cannot be compared across languages without correction, a point we operationalize in Section 3.
+
+## Cultural alignment in language models
+
+Recent work has examined which values language models express. Studies have probed model knowledge of cultural moral norms (Ramezani & Xu, 2023[[18]]), measured cultural bias and alignment (Tao *et al.*, 2024[[19]]), and shown that closed-style survey evaluation is unstable under trivial perturbations such as reordering response options (Kabir *et al.*, 2025[[20]]). A systematic survey of "culture" in LLM research distinguishes questionnaire-based, narrative-based, and behavioral measurement paths, and argues for alternatives to forced-choice elicitation (Adilazuarda *et al.*, 2024[[21]]; 2025[[22]]). This literature is relevant here for a methodological reason: it demonstrates that the instrument can dominate the result, which is precisely the concern our robustness framework addresses for text corpora.
+
+# Method
+
+## The measurement pipeline
+
+Our pipeline answers a single question: how strongly does a text lean toward a given value facet? It has five steps.
+
+**Step 1 (vectorization).** Every text and every lexicon word is mapped into one shared semantic space by a single multilingual embedding model. Using one model for both languages is essential; otherwise Chinese and English occupy spaces that cannot be compared.
+
+**Step 2 (facet location).** For each value facet, the vectors of all its words are averaged to form a centroid (Equation 1).
+
+**Step 3 (proximity).** The cosine similarity between a text vector and each facet centroid measures how close the text is to that facet (Equation 2).
+
+**Step 4 (within-text normalization).** We find that texts in different languages have systematically different similarity baselines in the shared space. Absolute similarity is therefore not comparable across languages. We normalize each text across all facets of a system, so that only the relative salience of facets within the same text is compared (Equation 3).
+
+**Step 5 (dimensional scoring).** For each dimension, the score is the difference between its two poles (Equation 4). A positive value indicates relative emphasis on the first pole.
+
+>FIGBODY path:figs/figB0_pipeline.png
+>FIG Figure 1: The measurement pipeline. A frozen bilingual lexicon and a single multilingual encoder produce facet centroids; texts are scored by cosine proximity, normalized within text to remove the cross-lingual baseline, and reduced to per-dimension contrast scores.
+>NOTE Source: drawn by the authors.
+
+$$#c(f)=\frac{1}{|L_f|}\sum_{w\in L_f} e(w)$$
+$$#sim(t,f)=\frac{e(t)^{T} c(f)}{\left\Vert e(t) \right\Vert \cdot \left\Vert c(f) \right\Vert}$$
+$$#s(t,f)=sim(t,f)-\frac{1}{|F|}\sum_{g\in F} sim(t,g)$$
+$$#d(t,D)=s(t,D^{+})-s(t,D^{-})$$
+
+where $e(\cdot)$ denotes an embedding vector, $L_f$ the word list of facet $f$, and $F$ the full set of facets in a value system. All texts and lexicon words are embedded with multilingual-e5-large (Wang *et al.*, 2024[[23]]).
+
+## The frozen lexicon
+
+The lexicon follows a principle of official anchoring, controlled expansion, machine screening, and full traceability. Anchor words are taken from the official item wording of VSM2013, WVS-7, and SVS/PVQ-RR (1,454 words). A large language model expands these into 3,192 bilingual candidates across three types (abstract value terms, issue signal terms, and behavioral or attitudinal terms). Four machine screens are then applied: semantic cohesion, facet discrimination, cross-lingual alignment, and corpus frequency. The final frozen version contains 2,559 words (995 English, 1,564 Chinese). Every decision is logged, so that the lexicon can be audited and the sensitivity of results to lexicon specification can be tested directly—which we do.
+
+## Validation framework
+
+We validate along three axes. At the reliability level, we test cross-lingual alignment quality (ground-truth retrieval AUC, parallel-sentence discrimination) and lexicon-version sensitivity (anchors only, anchors plus unscreened expansion, frozen). At the robustness level, we test direction consistency across eleven diachronic layers, three genres (political, news, review), and individual outlets, plus four independent checks (lexicon version, within-culture placebo, cross-model triangulation, questionnaire-item anchoring). At the criterion level, we test convergence between text-derived contrasts and Hofstede country scores and WVS survey means.
+
+# Data
+
+We construct three matched corpora, each designed so that content is held constant and only the discourse community varies. Same-film reviews pair Chinese and English reviews of the *same* film, so that film content is fully controlled. Month-aligned news pairs Chinese and Western coverage from the same month, controlling seasonality and issue cycles. Year-paired governing texts pair Chinese and Western annual governing statements from the same year, controlling historical period. Only under such content alignment can measured differences be attributed to how different communities speak about values rather than to what they are speaking about.
+
+>TAB Table 1: Three-layer corpora and matching design
+| Layer | Chinese side | Western side | Size | Matching |
+| --- | --- | --- | --- | --- |
+| State (governing texts) | Government Work Reports (1990–2026) | King's/Queen's Speech / SOTU / SOTEU | 122 texts | by year |
+| Media (recent news) | People's Daily-family (2026-01–09) | FineNews Western media (2025) | 27,000 articles | same month, adjacent year |
+| Public (recent reviews) | Douban (2019 scrape) | Letterboxd (2025 scrape) | 3,134 films / 46,274 reviews | same film and year |
+| Historical news | THUCNews (2005–2011) | XSum/BBC (2010–2017) | 20,000 + 20,000 | topic-stratified |
+| Historical reviews | Douban | IMDB (Maas *et al.*, 2011) | 10,000 + 10,000 | rating-by-length stratified |
+| Chinese films | Douban (Chinese audience) | Letterboxd (English audience) | 618 films / 9,744 reviews | same film, content-identity |
+>NOTE Notes. The review sets use title-and-year disambiguation to remove remake/TV version collisions; an additional tt-ID-linked set (via Douban's IMDB column and aclImdb/Tag Genome) provides exact same-film pairing without title ambiguity. Political long documents (mean 23,671 characters) use chunk-mean embedding to avoid truncation.
+
+The corpora further include a strictly same-year news replication set (People's Daily 2025 versus FineNews 2025) and eleven diachronic layers spanning 2005–2026 across political, news, and review genres, including a deep historical layer linked by IMDB title IDs.
+
+# Results
+
+## Measurement reliability
+
+Cross-lingual alignment quality is adequate for shared-space measurement. For 2,000 MUSE ground-truth English–Chinese word pairs, mean cosine similarity is 0.899 versus 0.805 for random pairs (separation 0.094, area under the ROC curve AUC = 0.981); Top-1 retrieval accuracy is 51.5% and Top-5 is 79.4%.
+
+A critical finding concerns the baseline. Raw cosine similarity is systematically higher for Chinese text across all 56 facets (by 0.03–0.06), and the excess applies simultaneously to mutually exclusive poles. Absolute similarity therefore reflects language geometry rather than cultural difference. Within-text normalization removes this component.
+
+>TAB Table 2: Cross-lingual alignment validity of multilingual-e5-large (English–Chinese)
+| Metric | Value |
+| --- | --- |
+| Mean cosine of 2,000 MUSE ground-truth word pairs | 0.899 |
+| Mean cosine of random word pairs | 0.805 |
+| Separation (ground-truth minus random) | 0.094 |
+| ROC AUC (ground-truth vs. random) | 0.981 |
+| Top-1 / Top-5 retrieval accuracy | 51.5% / 79.4% |
+| Parallel-sentence discrimination | 4/4 correct |
+>NOTE Notes. Alignment quality supports shared-space measurement; the cross-lingual baseline bias (all facets elevated by 0.03–0.06 for Chinese text) is corrected by within-text normalization.
+
+Lexicon sensitivity shows the same structure. Across three lexicon versions (anchors only; anchors plus unscreened expansion; frozen), text-level scores correlate at r = 0.97–1.00, but group contrasts are much more fragile: only a minority of dimensions retain their sign across versions. This asymmetry—robust individual measurement, fragile group contrasts—is a basic property of text-based cultural measurement and motivates our reporting rule: no sign-based claim enters the paper unless it survives independent changes of lexicon, model, and anchor.
+
+## Register differences between Chinese and Western discourse
+
+Across the three matched corpora, six Hofstede dimensions show a consistent structure (Table 3). Chinese discourse is more restraint-oriented than Western discourse in all three corpora (−15.15 reviews, −21.13 news, −14.74 political texts, all per mille); Western discourse is relatively more indulgence-oriented. Power distance shows a clean genre pattern: positive in reviews (+2.03) and governing texts (+2.04), negative in news (−2.33). Masculinity is positive in all three and strongest in governing texts (+6.37). These are register-level differences: they describe how institutions and platforms speak, not what populations believe.
+
+>TAB Table 3: Six-dimensional contrast scores (Chinese minus Western, ipsative ×1000) across the three matched corpora
+| Dimension | Same-film reviews | Month-aligned news | Governing texts |
+| --- | --- | --- | --- |
+| Power distance | +2.03 | −2.33 | +2.04 |
+| Identity (collectivism–individualism) | +0.73 | +1.81 | −1.85 |
+| Masculinity | +0.75 | +3.72 | +6.37 |
+| Uncertainty avoidance | +4.53 | +4.78 | +4.69 |
+| Long-/short-term orientation | −9.68 | −9.23 | −7.89 |
+| Indulgence-restraint | −15.10 | −21.13 | −14.74 |
+>NOTE Notes. Contrast = pole A minus pole B within each dimension; positive values indicate relative emphasis on the first pole by Chinese text. All contrasts are significant in paired tests (film-/month-/year-level); see the four-fold robustness framework for which are retained as findings.
+
+The differences hold at the outlet level. On indulgence-restraint, all 12 Western outlets (Independent, Fox, Telegraph, WaPo, NYT, CNN, Reuters, AP, BBC, USAToday, Guardian, NPR) are positive (+11.0 to +22.8) and all 3 Chinese outlets are negative (−3.4 to −8.5), with zero overlap; long-/short-term orientation separates the outlets completely as well (Figure 3). On diachronic replication across eleven layers spanning 2005–2026, uncertainty avoidance, long-/short-term orientation, and indulgence-restraint are direction-consistent in every layer; power distance follows the genre pattern (positive in review and state layers, negative in recent news layers) (Figure 2).
+
+>FIGBODY path:figs/fig2_layers.png
+>FIG Figure 2: Direction of the six-dimensional contrast scores across eleven diachronic layers (2005–2026) and three genres. Uncertainty avoidance, long-/short-term orientation, and indulgence-restraint are direction-consistent in every layer.
+>NOTE Source: drawn by the authors (zh−west, ipsative ×1000).
+
+>FIGBODY path:figs/fig3_outlets.png
+>FIG Figure 3: Outlet-level separation. On indulgence-restraint, the 12 Western outlets are all positive and the 3 Chinese outlets all negative, with zero overlap; the difference is a systemic register difference, not an outlet-level idiosyncrasy.
+>NOTE Source: drawn by the authors.
+
+## The four-fold robustness framework
+
+We subject every candidate finding to four independent checks, plus two data-processing checks (Figure 4 summarizes the evidence).
+
+**Lexicon-version sensitivity.** Contrasts are recomputed under three lexicon specifications. Only dimensions that keep their sign across versions are eligible.
+
+**Within-culture placebo.** We compare Chinese outlets with one another and Western outlets with one another to establish a noise floor for "two arbitrary outlets." The ratio of cross-cultural difference to within-culture noise is 5.75 for indulgence-restraint and 3.97 for long-/short-term orientation, but only 0.56–1.34 for power distance, identity, masculinity, and uncertainty avoidance. Only indulgence-restraint and long-/short-term orientation are measured with specificity above outlet-level noise.
+
+**Cross-model triangulation.** The pipeline is rerun with two further, architecturally independent multilingual encoders (LaBSE and BGE-M3, in addition to multilingual-e5-large). Indulgence-restraint is direction-consistent across all three encoders on the same-film review and month-aligned news corpora; masculinity is direction-consistent across all three encoders on all three corpora; power distance is consistent on two of three; identity, long-/short-term orientation, and uncertainty avoidance are not model-invariant. On long governing documents, encoder behavior is more sensitive to document-length handling, so we corroborate the political-layer result with the two encoders that use chunk-mean full-text embedding and do not treat it as model-invariant.
+
+**Questionnaire-item anchoring.** The anchor is replaced by the official VSM2013 item statements themselves—the operational definitions—rather than a derived word list. Power distance, indulgence-restraint, and masculinity agree with the lexicon-based result on all three corpora (text-level r = 0.82–0.90); identity agrees on two; long-/short-term orientation and uncertainty avoidance flip entirely (r = 0.24–0.27), indicating that these two dimensions reflect lexical specification rather than the construct.
+
+**Data-processing checks.** Replacing 2,000-character truncation with full-text chunk-mean embedding leaves all six dimensions direction-identical in both the news and review corpora (12 of 12). Reconstructing the news comparison with strictly same-year alignment (Chinese 2025 versus Western 2025) reproduces all six directions (6 of 6). Split-half reliability on the governing texts is high (mean r = 0.883).
+
+Taken together, the evidence is tiered. **Indulgence-restraint is the most robust dimension**—it passes lexicon-version, eleven-layer, placebo, and item-anchor checks, and is consistent across three encoders on the shorter-document corpora—and is reported as the core finding. **Power distance and masculinity** are corroborated by three independent anchors (and masculinity is now consistent across all three encoders on all corpora) and are reported as secondary. **Identity, long-/short-term orientation, and uncertainty avoidance** are method- or model-dependent; we report their instability as a finding about measurement rather than a finding about culture.
+
+>TAB Table 4: Four-fold robustness pass summary per dimension
+| Dimension | Lexicon version | 11-layer | Placebo | Cross-model | Item anchor | Verdict |
+| --- | --- | --- | --- | --- | --- | --- |
+| Indulgence-restraint | pass | pass | pass | pass | pass | core |
+| Power distance | pass | partial | fail | partial | pass | secondary |
+| Masculinity | fail | pass | fail | pass | pass | secondary |
+| Long-/short-term orientation | fail | pass | pass | partial | fail | not reported |
+| Identity | fail | fail | fail | fail | partial | not reported |
+| Uncertainty avoidance | fail | pass | fail | fail | fail | not reported |
+>NOTE Notes. "pass" = direction retained under the check; "partial" = genre- or model-dependent; "fail" = not retained. The cross-model column spans three encoders (multilingual-e5-large, LaBSE, BGE-M3); the item-anchor column uses the official VSM2013 item statements as the anchor.
+
+>FIGBODY path:figs/figB1_robustness.png
+>FIG Figure 4: Four-fold robustness evidence matrix. Each cell reports whether a dimension retains its direction under an independent check (lexicon version, eleven-layer within-model replication, within-culture placebo specificity, cross-model triangulation across three encoders, and questionnaire-item anchoring). Only indulgence-restraint survives all five.
+>NOTE Source: drawn by the authors.
+
+## Construct boundary: register, not attitude
+
+If text measured national values, text-derived scores should converge with survey benchmarks. They do not (Figure 5). Across Chinese, US, and UK rankings on Hofstede's six dimensions, only identity shows weak agreement (Spearman's rho = +0.50); indulgence-restraint is exactly opposite (rho = −1.00). Across 13 WVS facets, only 7 agree in direction with survey means—close to chance. The clearest decoupling involves corruption: Chinese news discourse is far less corruption-salient than Western news discourse (−18.6 per mille), whereas WVS data do not show lower corruption concern among Chinese respondents. Salience and attitude are different constructs.
+
+>TAB Table 5: Criterion validity—rank correlation between text-derived contrasts and survey benchmarks (China/US/UK)
+| Dimension | Spearman's rho (vs. Hofstede country scores) |
+| --- | --- |
+| Power distance | −0.50 |
+| Identity | +0.50 |
+| Masculinity | 0.00 |
+| Uncertainty avoidance | −0.50 |
+| Long-/short-term orientation | 0.00 |
+| Indulgence-restraint | −1.00 |
+>NOTE Notes. On WVS-7 (2017–2022), only 7 of 13 facets agree in direction between text salience and survey means—approximately chance. Text-derived salience and survey-measured attitudes are distinct constructs; the text measures discourse register, not national values.
+
+>FIGBODY path:figs/figB2_construct_boundary.png
+>FIG Figure 5: Construct boundary. Left: rank correlation between text-derived contrasts and Hofstede country scores across China, the US, and the UK. Right: number of WVS facets whose text-salience direction agrees with survey means. Convergence is at or near chance, indicating that text and survey measure different constructs.
+>NOTE Source: drawn by the authors.
+
+We therefore state an explicit construct boundary: **all East–West differences reported here are differences in discourse register, measurable at the level of text. They are not causal or attitudinal claims about national values.** Text characterizes how institutions and platforms speak about values, not how populations hold them.
+
+## What the registers contain
+
+Characterizing the two registers directly clarifies the finding. On the WVS and Schwartz systems, Western news is relatively higher on problem-, norm-, constraint-, and care-oriented facets (corruption, conformity to rules, social safety, benevolent care, universalism), whereas Chinese news is relatively higher on development-, vision-, and positive-experience facets (happiness, technology, hedonism, self-directed thought, post-materialism, tradition). The dominant axis of East–West textual difference is thus not a mirror of national values but a difference in institutional discourse register: the Chinese register is a development-and-ethics register, the Western register a rights-and-fairness register.
+
+The Chinese register, measured on the Socialist Core Values, is itself internally coherent, temporally stable, and shared across layers. Government Work Reports, official media, and public film reviews show profile correlations of 0.966, 0.810, and 0.658 (mean 0.811), and the four official outlets are near-identical. Prosperity ranks first in all three layers and dedication is nearly identical across them; the decade-long public trajectory (2010–2019) and the monthly official trajectory fluctuate by less than 1.5 per mille. Finally, content cultural identity moderates value expression: the same Chinese audience expresses its development-and-ethics register more strongly when reviewing domestic Chinese films than foreign films (identity +1.39 versus +0.73; power distance +2.51 versus +2.04; masculinity +2.41 versus +0.77). This is an association, not a causal claim; it indicates that discourse registers flex with the cultural identity of the content under discussion.
+
+# Discussion
+
+Our contribution is methodological and, we believe, generalizable beyond the particular comparison reported here.
+
+First, we identify and correct a cross-lingual baseline bias that silently affects any study comparing embedding similarity across languages. Within-text normalization is a simple and portable remedy.
+
+Second, we show that a four-fold robustness framework is both feasible and necessary. Individual-level text measurement is stable; group-level contrasts are not. Without independent variation of lexicon, model, and anchor, a substantial share of published group contrasts may reflect the instrument rather than the construct. We recommend the four checks as a reporting standard.
+
+Third, we demonstrate a symmetric measurement stance. Treating one culture's profile as the baseline against which others are scored is not only an ethical problem but a measurement error: it converts register differences into apparent deficits and obscures the internal coherence of each profile. Our results show that the Chinese value register is internally consistent, temporally stable, and shared across state, media, and public discourse—an object of study in its own right, not a deviation from a presumed norm.
+
+Finally, the construct boundary we document is itself a substantive result. Text corpora are increasingly used as proxies for public opinion. Our finding that text-derived value salience does not converge with survey-measured attitudes cautions against that substitution—and, more constructively, identifies what text corpora are uniquely good for: tracking how institutions and platforms frame values over time and across communities.
+
+# Limitations
+
+Three limitations remain. First, the Western news sample is constrained by robots-protocol availability, so BBC, Reuters, and AP are structurally absent; conclusions are bounded to accessible media text, though outlet-level analysis shows that the 12 Western outlets and 3 Chinese outlets separate without overlap, so local sampling skew cannot explain a separation of this magnitude. Second, the public-layer corpus consists of film reviews, whose value expression is shaped by viewing agendas; extension to social media is desirable. Third, our measurement rests on embedding models; although we triangulate three architecturally independent encoders and a questionnaire-item anchor, further triangulation with additional models and with dictionary- or LLM-based annotation would strengthen the framework. We note, however, that the main threats to validity have been addressed directly: text truncation is shown not to alter conclusions (12 of 12 direction-identical), adjacent-year alignment is corroborated by strict same-year alignment (6 of 6), and same-film version collisions are removed by title-and-year disambiguation plus IMDB-title-ID linkage.
+
+# References
+
+@ [1] Gentzkow, M., Kelly, B., & Taddy, M. (2019). Text as data. *Journal of Economic Literature*, *57*(3), 535–574. https://doi.org/10.1257/jel.20181020
+@ [2] Grimmer, J., Roberts, M. E., & Stewart, B. M. (2022). *Text as data: A new framework for machine learning and the social sciences*. Princeton, NJ: Princeton University Press.
+@ [3] Lazer, D., Kennedy, R., King, G., & Vespignani, A. (2014). The parable of Google Flu: Traps in big data analysis. *Science*, *343*(6176), 1203–1205. https://doi.org/10.1126/science.1248506
+@ [4] TeBlunthuis, N., Hase, V., & Chan, C.-H. (2024). Misclassification in automated content analysis causes bias in regression. Can we fix it? Yes we can! *Communication Methods and Measures*, *18*(3), 278–299. https://doi.org/10.1080/19312458.2023.2293713
+@ [5] Inglehart, R. (1997). *Modernization and postmodernization: Cultural, economic, and political change in 43 societies*. Princeton, NJ: Princeton University Press.
+@ [6] Hofstede, G. (2001). *Culture’s consequences: Comparing values, behaviors, institutions and organizations across nations* (2nd ed.). Thousand Oaks, CA: Sage.
+@ [7] Schwartz, S. H., & Cieciuch, J. (2012). Refining the theory of basic individual values. *Journal of Personality and Social Psychology*, *103*(4), 663–688. https://doi.org/10.1037/a0029393
+@ [8] Pennebaker, J. W., Boyd, R. L., Jordan, K., & Blackburn, K. (2015). *The development and psychometric properties of LIWC2015*. Austin, TX: University of Texas at Austin.
+@ [9] Ponizovskiy, V., Ardag, M., Grigoryan, L., Boyd, R., Dobewall, H., & Holtz, P. (2020). Development and validation of the Personal Values Dictionary: A theory-driven tool for investigating references to basic human values in text. *European Journal of Personality*, *34*(5), 885–902. https://doi.org/10.1002/per.2294
+@ [10] Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatically from language corpora contain human-like biases. *Science*, *356*(6334), 183–186. https://doi.org/10.1126/science.aal4230
+@ [11] Bolukbasi, T., Chang, K.-W., Zou, J. Y., Saligrama, V., & Kalai, A. T. (2016). Man is to computer programmer as woman is to homemaker? Debiasing word embeddings. *Advances in Neural Information Processing Systems 29* (NeurIPS 2016).
+@ [12] Garg, N., Schiebinger, L., Jurafsky, D., & Zou, J. (2018). Word embeddings quantify 100 years of gender and ethnic stereotypes. *Proceedings of the National Academy of Sciences*, *115*(16), E3635–E3644. https://doi.org/10.1073/pnas.1720347115
+@ [13] Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. In *Proceedings of NAACL-HLT 2019* (pp. 4171–4186). https://doi.org/10.18653/v1/N19-1423
+@ [14] Conneau, A., Lample, G., Ranzato, M., Denoyer, L., & Jégou, H. (2018). Word translation without parallel data. In *Proceedings of the 6th International Conference on Learning Representations (ICLR 2018)*. https://arxiv.org/abs/1710.04087
+@ [15] Conneau, A., Khandelwal, K., Goyal, N., Chaudhary, V., Wenzek, G., Guzmán, F., Grave, E., Ott, M., Zettlemoyer, L., & Stoyanov, V. (2020). Unsupervised cross-lingual representation learning at scale. In *Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics* (pp. 8440–8451). https://doi.org/10.18653/v1/2020.acl-main.747
+@ [16] Ruder, S., Vulić, I., & Søgaard, A. (2019). A survey of cross-lingual word embedding models. *Journal of Artificial Intelligence Research*, *65*, 569–631. https://doi.org/10.1613/jair.1.11640
+@ [17] Glavaš, G., Litschko, R., Ruder, S., & Vulić, I. (2019). How to (properly) evaluate cross-lingual word embeddings: On robustness and language specificity. In *Proceedings of NAACL-HLT 2019* (pp. 1920–1930). https://doi.org/10.18653/v1/N19-1204
+@ [18] Ramezani, A., & Xu, Y. (2023). Knowledge of cultural moral norms in large language models. In *Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics*. https://aclanthology.org/2023.acl-long.26/
+@ [19] Tao, Y., Viberg, O., Baker, R. S., & Kizilcec, R. F. (2024). Cultural bias and cultural alignment of large language models. *PNAS Nexus*, *3*(9), pgae346. https://doi.org/10.1093/pnasnexus/pgae346
+@ [20] Kabir, M., Abrar, A., & Ananiadou, S. (2025). Break the checkbox: Challenging closed-style evaluations of cultural alignment in LLMs. In *Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing* (pp. 24–51). https://doi.org/10.18653/v1/2025.emnlp-main.2
+@ [21] Adilazuarda, M. F., Mukherjee, S., Lavania, P., Singh, S. S., Aji, A. F., O’Neill, J., Modi, A., & Choudhury, M. (2024). Towards measuring and modeling “culture” in LLMs: A survey. In *Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing* (pp. 15763–15784). https://doi.org/10.18653/v1/2024.emnlp-main.882
+@ [22] Adilazuarda, M. F., Liu, C. C., Gurevych, I., & Aji, A. F. (2025). From surveys to narratives: Rethinking cultural value adaptation in LLMs. In *Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing* (pp. 18052–18079). https://doi.org/10.18653/v1/2025.emnlp-main.912
+@ [23] Wang, L., Yang, N., Huang, X., Jiao, B., Yang, L., Jiang, D., Majumder, R., & Wei, F. (2024). Multilingual E5 text embeddings: A technical report. arXiv:2402.05672.

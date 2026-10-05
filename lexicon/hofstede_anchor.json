@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "version": "anchor-v1",
+    "note": "Hofstede锚定层：依据VSM2013官方计分公式（Manual p.6节），每维度4个题项、2极。anchors为各题项核心内容词，provenance可追溯至题号。",
+    "formulas": {
+      "PDI": "35(m07-m02)+25(m20-m23)",
+      "IDV": "35(m04-m01)+35(m09-m06)",
+      "MAS": "35(m05-m03)+35(m08-m10)",
+      "UAI": "40(m18-m15)+25(m21-m24)",
+      "LTO": "40(m13-m14)+25(m19-m22)",
+      "IVR": "35(m12-m11)+40(m17-m16)"
+    },
+    "source": "VSM 2013 English questionnaire (geerthofstede.com, May 2013) + Manual VSM 2013"
+  },
+  "PDI_high": {
+    "items": [
+      {"q": "Q20", "text": "subordinates are afraid to contradict their boss (or students their teacher)", "pole": "+"},
+      {"q": "Q23", "text": "an organization structure in which certain subordinates have two bosses should be avoided at all cost", "pole": "+"}
+    ],
+    "anchor_en": ["afraid", "contradict", "boss", "subordinate", "teacher", "hierarchy", "authority", "obedience", "chain of command", "superior", "order", "command"],
+    "anchor_zh": ["害怕", "反驳", "上司", "下属", "服从", "权威", "等级", "命令", "敬畏", "层级", "领导", "听命"]
+  },
+  "PDI_low": {
+    "items": [
+      {"q": "Q02", "text": "have a boss (direct superior) you can respect", "pole": "-"},
+      {"q": "Q07", "text": "be consulted by your boss in decisions involving your work", "pole": "-"}
+    ],
+    "anchor_en": ["respect", "consulted", "decisions", "participation", "involvement", "voice", "equality", "egalitarian", "empowerment", "delegation", "dialogue", "consensus"],
+    "anchor_zh": ["尊重", "协商", "决策", "参与", "平等", "话语", "授权", "对话", "共识", "商量", "民主", "征询"]
+  },
+  "IDV_ind": {
+    "items": [
+      {"q": "Q01", "text": "have sufficient time for your personal or home life", "pole": "+"},
+      {"q": "Q06", "text": "do work that is interesting", "pole": "+"}
+    ],
+    "anchor_en": ["personal", "private", "own", "self", "interesting", "individual", "independence", "autonomy", "personal life", "free time", "myself", "choice"],
+    "anchor_zh": ["个人", "私人", "自我", "独立", "自主", "兴趣", "个人生活", "自由时间", "个性", "选择", "自身", "独处"]
+  },
+  "IDV_col": {
+    "items": [
+      {"q": "Q04", "text": "have security of employment", "pole": "-"},
+      {"q": "Q09", "text": "have a job respected by your family and friends", "pole": "-"}
+    ],
+    "anchor_en": ["family", "friends", "security", "employment", "belonging", "group", "collective", "loyalty", "community", "social approval", "kinship", "we"],
+    "anchor_zh": ["家庭", "家人", "朋友", "保障", "归属", "群体", "集体", "忠诚", "认同", "亲情", "我们", "社会认可"]
+  },
+  "MAS_mas": {
+    "items": [
+      {"q": "Q03", "text": "get recognition for good performance", "pole": "+"},
+      {"q": "Q10", "text": "have chances for promotion", "pole": "+"}
+    ],
+    "anchor_en": ["recognition", "performance", "promotion", "advancement", "achievement", "success", "ambition", "competition", "excellence", "career", "accomplishment", "winning"],
+    "anchor_zh": ["认可", "表现", "晋升", "成就", "成功", "雄心", "竞争", "卓越", "事业", "升职", "绩效", "进取"]
+  },
+  "MAS_fem": {
+    "items": [
+      {"q": "Q05", "text": "have pleasant people to work with", "pole": "-"},
+      {"q": "Q08", "text": "live in a desirable area", "pole": "-"}
+    ],
+    "anchor_en": ["pleasant", "cooperation", "friendly", "relationships", "harmony", "care", "support", "comfortable", "quality of life", "kindness", "empathy", "warm"],
+    "anchor_zh": ["愉快", "合作", "友好", "关系", "和谐", "关怀", "支持", "舒适", "生活质量", "友善", "共情", "温暖"]
+  },
+  "UAI_high": {
+    "items": [
+      {"q": "Q15", "text": "feel nervous or tense", "pole": "+"},
+      {"q": "Q24", "text": "company rules should not be broken, not even when breaking the rule would be in the organization's best interest", "pole": "+"}
+    ],
+    "anchor_en": ["nervous", "tense", "anxiety", "rules", "regulations", "procedure", "compliance", "strict", "certainty", "predictable", "structure", "formal"],
+    "anchor_zh": ["紧张", "焦虑", "规则", "规范", "程序", "遵从", "严格", "确定", "可预期", "秩序", "正式", "不安"]
+  },
+  "UAI_low": {
+    "items": [
+      {"q": "Q18", "text": "state of health (feeling well)", "pole": "-"},
+      {"q": "Q21", "text": "one can be a good manager without having a precise answer to every question", "pole": "-"}
+    ],
+    "anchor_en": ["relaxed", "flexible", "improvise", "ambiguity", "tolerance", "uncertainty", "informal", "adaptable", "spontaneous", "open", "easygoing", "experiment"],
+    "anchor_zh": ["放松", "灵活", "即兴", "模糊", "包容", "不确定", "非正式", "适应", "随性", "开放", "宽松", "尝试"]
+  },
+  "LTO_long": {
+    "items": [
+      {"q": "Q14", "text": "thrift (not spending more than needed)", "pole": "+"},
+      {"q": "Q22", "text": "persistent efforts are the surest way to results", "pole": "+"}
+    ],
+    "anchor_en": ["thrift", "persistent", "effort", "saving", "perseverance", "patience", "planning", "future", "investment", "discipline", "endurance", "long-term"],
+    "anchor_zh": ["节俭", "坚持", "努力", "储蓄", "毅力", "耐心", "规划", "未来", "投资", "自律", "忍耐", "长远"]
+  },
+  "LTO_short": {
+    "items": [
+      {"q": "Q13", "text": "doing a service to a friend", "pole": "-"},
+      {"q": "Q19", "text": "how proud are you to be a citizen of your country", "pole": "-"}
+    ],
+    "anchor_en": ["friend", "service", "proud", "country", "tradition", "present", "immediate", "reputation", "face", "social obligation", "now", "citizen"],
+    "anchor_zh": ["朋友", "服务", "自豪", "国家", "传统", "当下", "即时", "面子", "声誉", "人情", "公民", "眼前"]
+  },
+  "IND_ind": {
+    "items": [
+      {"q": "Q11", "text": "keeping time free for fun", "pole": "+"},
+      {"q": "Q16", "text": "are you a happy person", "pole": "+"}
+    ],
+    "anchor_en": ["fun", "happy", "enjoyment", "pleasure", "leisure", "free", "entertainment", "joy", "relaxation", "play", "celebration", "happiness"],
+    "anchor_zh": ["娱乐", "快乐", "享受", "愉悦", "休闲", "自由", "欢乐", "放松", "玩耍", "庆祝", "幸福", "开心"]
+  },
+  "IND_res": {
+    "items": [
+      {"q": "Q12", "text": "moderation: having few desires", "pole": "-"},
+      {"q": "Q17", "text": "other people or circumstances prevent you from doing what you really want", "pole": "-"}
+    ],
+    "anchor_en": ["moderation", "desires", "restraint", "self-control", "discipline", "frugality", "abstinence", "strict norms", "control", "suppression", "temperance", "duty"],
+    "anchor_zh": ["节制", "克制", "欲望", "自律", "约束", "勤俭", "禁欲", "规范", "控制", "压抑", "克己", "义务"]
+  }
+}
