@@ -12,18 +12,20 @@ This repository contains the reproducible code, frozen bilingual lexicon, aggreg
 
 | Path | Description |
 | --- | --- |
-| [`code/`](code) | Full reproducible pipeline (52 scripts): corpus construction → paired-set matching → lexicon freezing → embedding → analysis → robustness checks → figures. See [`code/代码说明.md`](code/代码说明.md). |
+| [`code/`](code) | Full reproducible pipeline (55 scripts): corpus construction → paired-set matching → lexicon freezing → embedding → analysis → robustness checks → figures → reference verification. See [`code/代码说明.md`](code/代码说明.md). |
 | [`lexicon/`](lexicon) | Frozen bilingual lexicon v3 (2,559 words, 4 value systems / 56 facets), official anchors (VSM2013, WVS-7, SVS/PVQ-RR), Socialist Core Values definitions, and the 51-word adjudication record. |
 | [`results/`](results) | Aggregate result tables (contrast scores, robustness checks, criterion correlations, layer-consensus statistics). **No raw text.** |
 | [`figures/`](figures) | All paper figures (PNG, CJK rendered with SimSun + Times New Roman). |
-| [`papers/`](papers) | Three manuscripts (`.docx` / `.pdf` / `.xmd` source). |
 | [`data_说明.md`](data_说明.md) | Data dictionary and processing notes. |
+| [`REFERENCE_VERIFICATION.md`](REFERENCE_VERIFICATION.md) | OpenAlex-based verification of all 111 references across the manuscripts' reference lists, plus journal-tier assessment. |
 
-## The three manuscripts / 三篇论文
+## Associated manuscripts / 相关论文
 
-1. **Main paper (基础论文)** — *文本表征的价值观——国家、媒体与大众三层话语中的中西文化差异测量研究*. A measurement-validity study: a four-fold robustness framework (lexicon-version sensitivity, within-culture placebo, three-model triangulation, questionnaire-item anchoring) applied to three content-matched corpora.
-2. **Paper A (国内)** — *国家、媒体与大众的三层共识：基于大规模文本测量的中国价值观结构与十年稳定性*. Value-consensus quantification across the state, media, and public layers.
-3. **Paper B (international)** — *Measuring Cultural Values in Text without a Cultural Baseline*. Methodological contribution: cross-lingual baseline-bias correction, the four-fold robustness framework, and an explicit construct boundary (text measures discourse register, not national attitudes).
+This repository supports three manuscripts (not hosted here):
+
+1. **Main paper** — *文本表征的价值观——国家、媒体与大众三层话语中的中西文化差异测量研究*. A measurement-validity study applying a four-fold robustness framework (lexicon-version sensitivity, within-culture placebo, three-model triangulation, questionnaire-item anchoring) to three content-matched corpora.
+2. **Paper A** — *国家、媒体与大众的三层共识：基于大规模文本测量的中国价值观结构与十年稳定性*. Value-consensus quantification across the state, media, and public layers.
+3. **Paper B** — *Measuring Cultural Values in Text without a Cultural Baseline*. Methodological contribution: cross-lingual baseline-bias correction, the four-fold robustness framework, and an explicit construct boundary (text measures discourse register, not national attitudes).
 
 ## Method in brief / 方法概要
 
